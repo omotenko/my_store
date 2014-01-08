@@ -1,0 +1,32 @@
+<h1>Items</h1>
+
+<% if @items.empty? %>
+	<b>No items in store</b>
+<% else %>
+	<table border="2" cellpadding="5" cellspacing="0">
+	
+		<tr>
+			<td><b>item id</b></td>
+			<td><b>Name</b></td>
+			<td><b>price</b></td>
+			<td><b>description</b></td>
+			<td colspan="2" align="center"><b>modification</b></td>
+		</tr>
+		
+		<% @items.each do |i| %>
+		
+			<tr>
+				<td><%= i.id %></td>
+				<td><%= link_to i.name, item_path(i) %></td>
+				<td><%= i.price %>&nbsp грн.</td>
+				<td><%= i.description %></td>
+				<td><%= link_to "Удалить",item_path(i), method: :delete, data: {confirm: "Точно удалить?"} %>
+				</td><td>Рейтинг: <%= i.votes_count %>,<%= link_to "+",upvote_item_path(i) %></td>
+				
+			</tr>
+		
+		<% end %>
+	
+	</table>
+
+<% end %>

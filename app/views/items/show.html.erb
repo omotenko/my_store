@@ -1,0 +1,7 @@
+<h1><%= @item.name %></h1>
+
+<ul>
+  <li><%= @item.price %>грн.</li>
+  <li><%= url_to_link(url_to_image(@item.description)) %></li>
+  <li><%= @item.weight %>кг.</li>
+</ul>
